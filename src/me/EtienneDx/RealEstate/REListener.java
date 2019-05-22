@@ -27,7 +27,7 @@ public class REListener implements Listener
 		PluginManager pm = RealEstate.instance.getServer().getPluginManager();
 
 		pm.registerEvents(this, RealEstate.instance);
-		//RealEstate.instance.getCommand("re").setExecutor(this);
+		RealEstate.instance.getCommand("re").setExecutor(this);
 	}
 
 	@EventHandler
