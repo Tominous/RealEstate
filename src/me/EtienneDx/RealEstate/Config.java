@@ -22,7 +22,7 @@ public class Config extends AnnotationConfig
     
     @ConfigField(name="RealEstate.Keywords.SignsHeader", comment = "What is displayed in top of the signs")
     public String cfgSignsHeader = ChatColor.GOLD + "[RealEstate]";
-    //public List<String> cfgSigns;
+    public List<String> cfgSigns;
 
     @ConfigField(name="RealEstate.Keywords.Sell", comment = "List of all possible possible signs headers to sell a claim")
     public List<String> cfgSellKeywords = Arrays.asList("[sell]", "[sell claim]", "[sc]", "[re]", "[realestate]");
@@ -109,10 +109,10 @@ public class Config extends AnnotationConfig
     	return ret;
     }
     
-    /*public void loadConfig(YamlConfiguration config)
+    public void loadConfig(YamlConfiguration config)
     {
     	this.cfgSignsHeader = config.getString("RealEstate.Keywords.SignsHeader", ChatColor.GOLD + "[RealEstate]");
-    	//this.cfgSigns = getConfigList(config, "RealEstate.Keywords.Signs", Arrays.asList("[re]", "[realestate]"));
+    	this.cfgSigns = getConfigList(config, "RealEstate.Keywords.Signs", Arrays.asList("[re]", "[realestate]"));
 
     	this.cfgSellKeywords = getConfigList(config, "RealEstate.Keywords.Sell", Arrays.asList("[sell]", "[sell claim]", "[sc]", "[re]", "[realestate]"));
     	this.cfgRentKeywords = getConfigList(config, "RealEstate.Keywords.Rent", Arrays.asList("[rent]", "[rent claim]", "[rc]"));
@@ -149,20 +149,20 @@ public class Config extends AnnotationConfig
         this.cfgLeaseTime = config.getString("RealEstate.Default.Duration.Lease", "7D");
         
         this.cfgLeasePayments = config.getInt("RealEstate.Default.PaymentsCount.Lease", 5);
-    }*/
+    }
     
     @Override
     public void loadConfig()
     {
-        //YamlConfiguration config = YamlConfiguration.loadConfiguration(new File(this.configFilePath));
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(new File(this.configFilePath));
         this.loadConfig(this.configFilePath);
     }
     
-    /*public void saveConfig()
+    public void saveConfig()
     {
     	FileConfiguration outConfig = new YamlConfiguration();
     	outConfig.set("RealEstate.Keywords.SignsHeader", this.cfgSignsHeader);
-    	//outConfig.set("RealEstate.Keywords.Signs", this.cfgSigns);
+    	outConfig.set("RealEstate.Keywords.Signs", this.cfgSigns);
     	
     	outConfig.set("RealEstate.Keywords.Sell", this.cfgSellKeywords);
     	outConfig.set("RealEstate.Keywords.Rent", this.cfgRentKeywords);
@@ -208,5 +208,5 @@ public class Config extends AnnotationConfig
         {
             RealEstate.instance.log.info("Unable to write to the configuration file at \"" + this.configFilePath + "\"");
         }
-    }*/
+    }
 }
